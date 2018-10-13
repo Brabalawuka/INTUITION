@@ -8,7 +8,68 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+        <NavigationView IsSettingsVisible="True" x:Name="Menu"
+                        AlwaysShowHeader="False" 
+                        SelectionChanged="Menu_SelectionChanged"
+                        IsBackButtonVisible="Collapsed"
+                        x:FieldModifier="Public">
+
+
+
+
+            <NavigationView.MenuItems>
+                
+                <NavigationViewItemHeader Content="New Event" />
+
+                <NavigationViewItem Content="Add"
+                                    Tag="AddEvent"
+                                    Name="AddEventButton">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE710;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+
+                <NavigationViewItemHeader Content="Event Collection" />
+
+
+                <NavigationViewItem Content="MapView"
+                                    IsSelected="True"
+                                    Tag="MapView">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets"
+                          Glyph="&#xE787;" />
+                    </NavigationViewItem.Icon>
+
+                </NavigationViewItem>
+                <NavigationViewItem Content="ListView"
+                                    Tag="ListView">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets"
+                          Glyph="&#xE7C4;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+            </NavigationView.MenuItems>
+
+            <NavigationView.PaneFooter>
+
+                <NavigationViewItem Content="FeedBack"
+                                    Tag="Feedback"
+                                    Name="FeedbackButton" Tapped="FeedbackButton_Tapped">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xED15;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.PaneFooter>
+            <Frame Name="MainPageFrame" />
+
+        </NavigationView>
+
+
 
     </Grid>
 </Page>

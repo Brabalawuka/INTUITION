@@ -22,9 +22,57 @@ namespace INTUITION
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private async void Dialog(string args)
+        {
+
+
+            ContentDialog dialog = new ContentDialog
+            {
+                Title = "Errrrr....",
+                Content = args,
+                CloseButtonText = "Ok"
+            };
+
+            ContentDialogResult result = await dialog.ShowAsync();
+        }
+
+
         public MainPage()
         {
             this.InitializeComponent();
+            MainPageFrame.Navigate(typeof(MapView));
+        }
+
+        private void Menu_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            if (args.IsSettingsSelected)
+            {
+                MainPageFrame.Navigate(typeof(Setting));
+            }
+            else
+            {
+                NavigationViewItem item = args.SelectedItem as NavigationViewItem;
+                switch (item.Tag.ToString())
+                {
+                    case "MapView":
+                        MainPageFrame.Navigate(typeof(MapView));
+                        break;
+                    case "ListView":
+                        MainPageFrame.Navigate(typeof(MapView));
+                        break;
+                    case "AddEvent":
+                        MainPageFrame.Navigate(typeof(Add));
+                        break;
+
+
+                }
+            }
+        }
+
+        private void FeedbackButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Dialog("Surprise Motherf*****!!!!");
+
         }
     }
 }
