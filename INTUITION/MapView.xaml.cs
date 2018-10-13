@@ -29,7 +29,7 @@ namespace INTUITION
         {
             this.InitializeComponent();
             
-            AddSpaceNeedleIcon("First place");
+            
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -37,14 +37,13 @@ namespace INTUITION
             // Specify a known location.
             BasicGeoposition cityPosition = new BasicGeoposition() { Latitude = 1.348, Longitude = 103.6827 };
             Geopoint cityCenter = new Geopoint(cityPosition);
-
             // Set the map location.
             MapControl1.Center = cityCenter;
-            MapControl1.ZoomLevel = 15.4;
-            MapControl1.LandmarksVisible = true;
+            //Load all pins
+            AddSpaceNeedleIcon("First place", 24);
         }
 
-        public void AddSpaceNeedleIcon(string title )
+        public void AddSpaceNeedleIcon(string title, int id)
         {
             var MyLandmarks = new List<MapElement>();
 
@@ -55,9 +54,9 @@ namespace INTUITION
             {
                 Location = snPoint,
                 NormalizedAnchorPoint = new Point(0.5, 1.0),
-                
+                Tag = id,
                 Title = title,
-                CollisionBehaviorDesired = MapElementCollisionBehavior.RemainVisible,
+                
 
             };
 
@@ -73,11 +72,13 @@ namespace INTUITION
         {
             MapIcon myClickedIcon = args.MapElements.FirstOrDefault(x => x is MapIcon) as MapIcon;
             EventDialog.Title = myClickedIcon.Title;
+            EventDialog.Tag = myClickedIcon.Tag;
             Tilteblock.Text = "This is a event for all animal lovers to network!";
             Time.Text = "Time:" + "2018-10-12";
             Venue.Text = "Venue" + "LHS_TR_16";
 
             await EventDialog.ShowAsync();
+
 
 
         }
@@ -86,7 +87,8 @@ namespace INTUITION
 
         private void EventDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-
+            
+            Frame.Navigate(typeof(EventDetail), sender.Tag);
         }
     }
 }
