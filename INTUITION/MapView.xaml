@@ -31,7 +31,7 @@
         <ContentDialog x:Name="EventDialog"
                        PrimaryButtonText="See Detail" 
                        PrimaryButtonClick="EventDialog_PrimaryButtonClick"
-                       CloseButtonText="Close"
+                       CloseButtonText="CLose"
                        
                        MaxWidth="200"
            >

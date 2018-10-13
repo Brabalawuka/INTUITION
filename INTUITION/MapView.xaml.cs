@@ -40,7 +40,7 @@ namespace INTUITION
             // Set the map location.
             MapControl1.Center = cityCenter;
             //Load all pins
-            AddSpaceNeedleIcon("First place", 24);
+            AddSpaceNeedleIcon("Greatest Event", 24);
         }
 
         public void AddSpaceNeedleIcon(string title, int id)
@@ -73,8 +73,8 @@ namespace INTUITION
             MapIcon myClickedIcon = args.MapElements.FirstOrDefault(x => x is MapIcon) as MapIcon;
             EventDialog.Title = myClickedIcon.Title;
             EventDialog.Tag = myClickedIcon.Tag;
-            Tilteblock.Text = "This is a event for all animal lovers to network!";
-            Time.Text = "Time:" + "2018-10-12";
+            Tilteblock.Text = "This is a event u should never miss!!!!!";
+            Time.Text = "Time:" + "2018-10-13";
             Venue.Text = "Venue" + "LHS_TR_16";
 
             await EventDialog.ShowAsync();
