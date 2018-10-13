@@ -10,10 +10,39 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="400"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+
+        <StackPanel Grid.Row="0" Margin="40" HorizontalAlignment="Stretch" Orientation="Horizontal" VerticalAlignment="Center">
+            <Image Name="Eventimage" Stretch="Fill" Width="300" VerticalAlignment="Stretch" Height="auto" Margin="0,0,40,0"/>
+            <StackPanel Orientation="Vertical" Width="auto" >
+                <TextBlock  FontSize="40"  FontWeight="Bold" Name="Event" />
+
+
+                <TextBlock Name="OSDblock"  Height="auto" TextWrapping="WrapWholeWords" TextAlignment="Justify" Margin="0,0,0,40"/>
+                <TextBlock Name="Dateblock"  Margin="0,5,0,0"/>
+                <TextBlock Name="Timeblock"  Margin="0,5,0,0"/>
+                <TextBlock Name="Venueblock" Margin="0,5,0,20"/>
+                <StackPanel Orientation="Horizontal" >
+                    <TextBlock Text="Registration Free?" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <Image Name="registrationimage" Height="20" Width="20" Margin="0,0,0,0" HorizontalAlignment="Left"/>
+                </StackPanel>
+                
+                
+            </StackPanel>
+
+           
+            
+
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Vertical" >
+            <TextBlock  Height="auto"  Text="Detail" FontSize="30" FontWeight="SemiBold" Margin="380,0,40,0"/>
+
+            <TextBlock Name="detailblock" Margin="380,10,40,0" TextWrapping="Wrap"/>
+            <Button Name="Registerbutton" Margin="380,20" VerticalAlignment="Center"  Content="Register"  Click="Registerbutton_Click"  HorizontalAlignment="Left" />
+        </StackPanel>
         
 
 
