@@ -68,14 +68,35 @@ namespace INTUITION
                 UploadPhoto.Content = "Operation cancelled.";
             }
             Windows.Storage.StorageFolder folder = Windows.Storage.ApplicationData.Current.LocalFolder;
-            file = await folder.CreateFileAsync(file.Name+ ".jpg");
+            //file = await folder.CreateFileAsync(file.Name+ ".jpg");
 
+            string filename = file.Name + ".jpg";
+
+            setPhotoName(filename);
 
         }
+        string photoName;
+        private void setPhotoName(string photoName)
+        {
+            this.photoName = photoName;
+        }
+
+
+
+
 
         private void UploadPhoto_Click(object sender, RoutedEventArgs e)
         {
             SelectPhoto();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string eventTitle = EventName.Text;
+            string eventVenue = EventVenue.Text;
+            string eventDescription = OneLineDescription.Text;
+
+           // var anEvent = new Event(eventTitle, 1, eventDescription,);
         }
     }
 }

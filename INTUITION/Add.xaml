@@ -22,7 +22,10 @@
             <TextBlock Text="Now Pin Your Event!" TextWrapping="Wrap"   FontSize="25dp" Height="32" Margin="972,500,-225,468"/>
             <Button Name="UploadPhoto" Content="Upload Photo" FontSize="25dp" HorizontalAlignment="Left" Margin="180,584,0,0" VerticalAlignment="Top" Click="UploadPhoto_Click"/>
             <TextBlock HorizontalAlignment="Left" FontStyle="Oblique" FontSize="23" Margin="180,643,0,0" Text="Name of photo uploaded" Name="PhotoName" TextWrapping="Wrap" VerticalAlignment="Top"/>
-             
+            <Button Click="Button_Click" Content="Submit" FontSize="28dp" HorizontalAlignment="Left" Margin="819,750,0,0" VerticalAlignment="Top"/>
+
+
+
         </Grid>
 
         <ContentDialog
