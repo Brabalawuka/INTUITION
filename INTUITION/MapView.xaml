@@ -5,10 +5,21 @@
     xmlns:local="using:INTUITION"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     mc:Ignorable="d"
-    Background="Red">
+    >
 
     <Grid>
+        <Grid x:Name="pageGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+
+            <Maps:MapControl
+            x:Name="MapControl1"            
+            ZoomInteractionMode="GestureAndControl"
+            TiltInteractionMode="GestureAndControl"   
+            
+            MapServiceToken="Am78EI0vQ-065dNx5dg-oL86VrLRqeY7RU5FhJbBGG4gec03jog4uIDaFvnlH4Dq"/>
+
+        </Grid>
     </Grid>
 </Page>
