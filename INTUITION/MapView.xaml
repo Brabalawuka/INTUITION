@@ -14,13 +14,17 @@
 
 
             <Maps:MapControl
-            x:Name="MapControl1"            
-            ZoomInteractionMode="GestureAndControl"
-            TiltInteractionMode="GestureAndControl" 
-            RotateInteractionMode ="GestureAndControl" 
-            MapElementClick="MapControl1_MapElementClick"
-            
-            MapServiceToken="KYdBGs96ZoznLQ1xaRsJ~5iI72YvjPLrZp331L_obOQ~AqfLDboaUQKhi7DKAGBdTntCEMHZfwvfCrcQoJHTFkjtnt_GzGEwHbOgxlGsQSE2"/>
+                x:Name="MapControl1"            
+                ZoomInteractionMode="GestureAndControl"
+                TiltInteractionMode="GestureAndControl" 
+                RotateInteractionMode ="GestureAndControl" 
+                MapElementClick="MapControl1_MapElementClick"
+                ZoomLevel="15.4"
+                LandmarksVisible="True"
+                BusinessLandmarksEnabled="True"
+                BusinessLandmarksVisible="True"
+                PedestrianFeaturesVisible="True"
+                MapServiceToken="KYdBGs96ZoznLQ1xaRsJ~5iI72YvjPLrZp331L_obOQ~AqfLDboaUQKhi7DKAGBdTntCEMHZfwvfCrcQoJHTFkjtnt_GzGEwHbOgxlGsQSE2"/>
 
         </Grid>
 

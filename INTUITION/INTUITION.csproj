@@ -98,6 +98,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Event.cs" />
     <Compile Include="EventDetail.xaml.cs">
       <DependentUpon>EventDetail.xaml</DependentUpon>
     </Compile>
@@ -157,6 +158,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.7</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
+      <Version>5.0.0-preview.gb86cb1c4cb</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
