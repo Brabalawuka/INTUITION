@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
 namespace INTUITION
@@ -47,5 +48,34 @@ namespace INTUITION
             LoginDialog.Hide();
         }
 
+
+        private async void SelectPhoto() {
+            var picker = new Windows.Storage.Pickers.FileOpenPicker();
+            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
+            picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+            picker.FileTypeFilter.Add(".jpg");
+            picker.FileTypeFilter.Add(".jpeg");
+            picker.FileTypeFilter.Add(".png");
+
+            Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
+            if (file != null)
+            {
+                // Application now has read/write access to the picked file
+                UploadPhoto.Content = "Picked photo: " + file.Name;
+            }
+            else
+            {
+                UploadPhoto.Content = "Operation cancelled.";
+            }
+            Windows.Storage.StorageFolder folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            file = await folder.CreateFileAsync(file.Name+ ".jpg");
+
+
+        }
+
+        private void UploadPhoto_Click(object sender, RoutedEventArgs e)
+        {
+            SelectPhoto();
+        }
     }
 }
