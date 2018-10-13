@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,6 +26,26 @@ namespace INTUITION
         public Add()
         {
             this.InitializeComponent();
+
         }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            await Task.Delay(1);
+            base.OnNavigatedTo(e);
+            if (App.getLogInStatus() == false)
+            {
+                var result = await LoginDialog.ShowAsync();
+            }
+            
+
+
+        }
+        private void SignInButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            App.setLogInStatus();
+            LoginDialog.Hide();
+        }
+
     }
 }

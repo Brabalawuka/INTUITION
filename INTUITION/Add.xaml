@@ -6,9 +6,24 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="Blue">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <ContentDialog
+        x:Name="LoginDialog"
+        PrimaryButtonClick="SignInButtonClick"
+        PrimaryButtonText="Sign In"
+        >
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="User Name" TextWrapping="Wrap"/>
+            <TextBox Text="e.g. Mc Donald" FontWeight="Light" FontSize="15dp"/>
+            <TextBlock Text="Password" TextWrapping="Wrap"/>
+            <PasswordBox/>
 
-    </Grid>
+
+        </StackPanel>
+    </ContentDialog>
+    
+    
+    
+    
 </Page>
