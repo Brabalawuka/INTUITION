@@ -29,14 +29,25 @@
                                  Height="500"
                                  Margin="30"
                                  HorizontalAlignment="Left"
+                                 IsDoubleTapEnabled="True"
+                                 MapDoubleTapped="mymap_MapDoubleTapped"
                                  MapServiceToken="KYdBGs96ZoznLQ1xaRsJ~5iI72YvjPLrZp331L_obOQ~AqfLDboaUQKhi7DKAGBdTntCEMHZfwvfCrcQoJHTFkjtnt_GzGEwHbOgxlGsQSE2"/>
 
                     <TextBlock HorizontalAlignment="Left" Text="Date" TextWrapping="Wrap"    Margin="30,30,0,5"/>
                     <DatePicker HorizontalAlignment="Left" Width="350" Name="EventDate"  Margin="30,0,0,0" VerticalAlignment="Top" />
-                    <TextBlock HorizontalAlignment="Left" Text="TimeandDuration"      Margin="30,30,0,5"/>
+                    <TextBlock HorizontalAlignment="Left" Text="Time and Duration"      Margin="30,30,0,5"/>
                     <TextBox  HorizontalAlignment="Left"  Width="350" PlaceholderText="Max 100 words" Name="Timeandduration" Margin="30,0,0,0"/>
+                    <StackPanel Orientation="Horizontal" Margin="30,30,20,5">
+                        <TextBlock HorizontalAlignment="Left" Text="Is registration required?"  VerticalAlignment="Center"    />
+                        <ToggleSwitch Name="IRR" VerticalAlignment="Center" Padding="30,0,0,0"/>
+                    </StackPanel>
+                    <TextBlock HorizontalAlignment="Left" Text="If yes please enter registration link"      Margin="30,30,0,5"/>
+                    <TextBox  HorizontalAlignment="Left"  Width="350" PlaceholderText="Max 100 words" Name="registrationlink" Margin="30,0,0,0"/>
                     <TextBlock HorizontalAlignment="Left" Text="A photo for your event"      Margin="30,30,0,5"/>
                     <Button   HorizontalAlignment="Left" Name="UploadPhoto" Content="Upload Photo"  Margin="30,0,0,0"  Click="UploadPhoto_Click"/>
+                    <TextBlock HorizontalAlignment="Left" Text="Please enter event details"      Margin="30,30,0,5"/>
+                    <TextBox Width="800" Height="500" TextWrapping="Wrap" Name="detail" HorizontalAlignment="Left"  />
+
 
                 </StackPanel>
 
@@ -44,6 +55,10 @@
             </Grid>
         </ScrollViewer>
         
+<<<<<<< HEAD
+=======
+
+>>>>>>> b6e1b1ecade614002499f7e0b92dcb9f9a7daae1
         <ContentDialog
             Visibility="Visible"
             x:Name="LoginDialog"
