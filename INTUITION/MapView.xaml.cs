@@ -32,8 +32,8 @@ namespace INTUITION
         public MapView()
         {
             this.InitializeComponent();
-           
 
+            int a = 0;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -46,23 +46,6 @@ namespace INTUITION
             // Set the map location.
             MapControl1.Center = cityCenter;
             //Load all pins
-<<<<<<< HEAD
-
-                Debug.WriteLine("here");
-                int id = 1;
-
-                string eventTitle = db.getAttributeById(id, "title");
-                string eventLatitude = db.getAttributeById(id, "lat");
-                string eventLongtitude = db.getAttributeById(id, "lon");
-                string eventImageName = db.getAttributeById(id, "image");
-                Debug.WriteLine(eventTitle);
-                Debug.WriteLine(eventLatitude);
-                Debug.WriteLine(eventLongtitude);
-                double latitude = double.Parse(eventLatitude);
-                double longtitude = double.Parse(eventLongtitude);
-
-                Debug.WriteLine(eventTitle);
-=======
  
                 //testing
                 int id=1;
@@ -85,20 +68,12 @@ namespace INTUITION
 
                 latitude = double.Parse(eventLatitude);
                 longtitude = double.Parse(eventLongtitude);
->>>>>>> dc473f617911c55cb444f347730ec7d7aa568261
 
                 BasicGeoposition iconPosition = new BasicGeoposition() { Latitude = latitude, Longitude = longtitude };
                 AddSpaceNeedleIcon(eventTitle, id, iconPosition);
 
-<<<<<<< HEAD
-                
-
-                
-
-=======
                 id++;
             }
->>>>>>> dc473f617911c55cb444f347730ec7d7aa568261
         }
 
         public void AddSpaceNeedleIcon(string title, int id, BasicGeoposition iconposition)
