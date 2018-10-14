@@ -26,8 +26,7 @@ namespace INTUITION
     /// </summary>
     public sealed partial class MapView : Page
     {
-        static Windows.Storage.StorageFolder folder = Windows.Storage.ApplicationData.Current.LocalFolder;
-        static Database db = new Database(folder.Path + "\\sheet.csv");
+
 
 
         public MapView()
@@ -39,12 +38,15 @@ namespace INTUITION
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            Windows.Storage.StorageFolder folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            Database db = new Database(folder.Path + "\\sheet.csv");
             // Specify a known location.
             BasicGeoposition cityPosition = new BasicGeoposition() { Latitude = 1.348, Longitude = 103.6827 };
             Geopoint cityCenter = new Geopoint(cityPosition);
             // Set the map location.
             MapControl1.Center = cityCenter;
             //Load all pins
+<<<<<<< HEAD
 
                 Debug.WriteLine("here");
                 int id = 1;
@@ -60,14 +62,43 @@ namespace INTUITION
                 double longtitude = double.Parse(eventLongtitude);
 
                 Debug.WriteLine(eventTitle);
+=======
+ 
+                //testing
+                int id=1;
+
+                string eventTitle;
+                string eventLatitude;
+                string eventLongtitude;
+                string eventImageName;
+
+                double latitude;
+                double longtitude;
+
+
+            while (db.getAttributeById(id, "title") != null)
+            {
+                eventTitle = db.getAttributeById(id, "title");
+                eventLatitude = db.getAttributeById(id, "lat");
+                eventLongtitude = db.getAttributeById(id, "lon");
+                eventImageName = db.getAttributeById(id, "image");
+
+                latitude = double.Parse(eventLatitude);
+                longtitude = double.Parse(eventLongtitude);
+>>>>>>> dc473f617911c55cb444f347730ec7d7aa568261
 
                 BasicGeoposition iconPosition = new BasicGeoposition() { Latitude = latitude, Longitude = longtitude };
                 AddSpaceNeedleIcon(eventTitle, id, iconPosition);
 
+<<<<<<< HEAD
                 
 
                 
 
+=======
+                id++;
+            }
+>>>>>>> dc473f617911c55cb444f347730ec7d7aa568261
         }
 
         public void AddSpaceNeedleIcon(string title, int id, BasicGeoposition iconposition)
@@ -97,6 +128,8 @@ namespace INTUITION
 
         private async void MapControl1_MapElementClick(MapControl sender, MapElementClickEventArgs args)
         {
+            Windows.Storage.StorageFolder folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            Database db = new Database(folder.Path + "\\sheet.csv");
             MapIcon myClickedIcon = args.MapElements.FirstOrDefault(x => x is MapIcon) as MapIcon;
             EventDialog.Title = myClickedIcon.Title;
             EventDialog.Tag =  myClickedIcon.Tag;
