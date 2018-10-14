@@ -5,35 +5,54 @@
     xmlns:local="using:INTUITION"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 
+
+
     <Grid>
-        <Grid>
-            <TextBlock HorizontalAlignment="Left" FontSize="25dp" Margin="180,128,0,0" Text="Event Name" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <TextBox Name="EventName" Text="TextBox" Margin="180,-318,879,318" Height="0"/>
-            <TextBlock Text="One Sentence Description" TextWrapping="Wrap"   FontSize="25dp" Height="32" Margin="180,227,567,741" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-            <TextBox Text="TextBox" Name="OneLineDescription" Margin="180,266,879,698" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-            <TextBlock Text="Event Venue" TextWrapping="Wrap"   FontSize="25dp" Height="32" Margin="180,328,567,640" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-            <TextBox Text="TextBox" Name="EventVenue" Margin="180,367,879,597"/>
-            <TextBlock Text="Date" TextWrapping="Wrap"   FontSize="25dp" Height="32" Margin="180,424,567,544"/>
-            <DatePicker Name="EventDate" FontSize="23" HorizontalAlignment="Left" Margin="180,462,0,0" VerticalAlignment="Top"/>
-            <TextBlock Text="Now Pin Your Event!" TextWrapping="Wrap"   FontSize="25dp" Height="32" Margin="972,500,-225,468"/>
-            <Button Name="UploadPhoto" Content="Upload Photo" FontSize="25dp" HorizontalAlignment="Left" Margin="180,584,0,0" VerticalAlignment="Top" Click="UploadPhoto_Click"/>
-            <TextBlock HorizontalAlignment="Left" FontStyle="Oblique" FontSize="23" Margin="180,643,0,0" Text="Name of photo uploaded" Name="PhotoName" TextWrapping="Wrap" VerticalAlignment="Top"/>
-             
-        </Grid>
+        <ScrollViewer>
+            <Grid>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock HorizontalAlignment="Left"  Margin="30,30,0,5" Text="Event Name"  VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" Width="350" Name="EventName" PlaceholderText="Enter the event name" Margin="30,0,0,0" />
+                    <TextBlock  HorizontalAlignment="Left" Text="One Sentence Description"   Margin="30,30,0,5"  />
+                    <TextBox HorizontalAlignment="Left"  Width="350" PlaceholderText="Max 100 words" Name="OneLineDescription" Margin="30,0,0,0" MaxWidth="650" />
+                    <TextBlock HorizontalAlignment="Left" Text="Event Venue" TextWrapping="Wrap"   Margin="30,30,0,5"  />
+                    <TextBox  HorizontalAlignment="Left"  Width="350" PlaceholderText="Max 100 words" Name="EventVenue" Margin="30,0,0,0"/>
+                    <Maps:MapControl Name="mymap"
+                                 ZoomInteractionMode="GestureAndControl"
+                                 Width="500"
+                                 Height="500"
+                                 Margin="30"
+                                 HorizontalAlignment="Left"
+                                 MapServiceToken="KYdBGs96ZoznLQ1xaRsJ~5iI72YvjPLrZp331L_obOQ~AqfLDboaUQKhi7DKAGBdTntCEMHZfwvfCrcQoJHTFkjtnt_GzGEwHbOgxlGsQSE2"/>
+
+                    <TextBlock HorizontalAlignment="Left" Text="Date" TextWrapping="Wrap"    Margin="30,30,0,5"/>
+                    <DatePicker HorizontalAlignment="Left" Width="350" Name="EventDate"  Margin="30,0,0,0" VerticalAlignment="Top" />
+                    <TextBlock HorizontalAlignment="Left" Text="TimeandDuration"      Margin="30,30,0,5"/>
+                    <TextBox  HorizontalAlignment="Left"  Width="350" PlaceholderText="Max 100 words" Name="Timeandduration" Margin="30,0,0,0"/>
+                    <TextBlock HorizontalAlignment="Left" Text="A photo for your event"      Margin="30,30,0,5"/>
+                    <Button   HorizontalAlignment="Left" Name="UploadPhoto" Content="Upload Photo"  Margin="30,0,0,0"  Click="UploadPhoto_Click"/>
+
+                </StackPanel>
+
+
+            </Grid>
+        </ScrollViewer>
+        
 
         <ContentDialog
-           Visibility="Visible"
-        x:Name="LoginDialog"
-        PrimaryButtonClick="SignInButtonClick"
-        PrimaryButtonText="Sign In"
+            Visibility="Visible"
+            x:Name="LoginDialog"
+            PrimaryButtonClick="SignInButtonClick"
+            PrimaryButtonText="Sign In"
         >
             <StackPanel Orientation="Vertical">
-                <TextBlock Text="User Name" TextWrapping="Wrap"/>
-                <TextBox Text="e.g. Mc Donald" FontWeight="Light" FontSize="15dp"/>
+                <TextBlock Text="User Name" Margin="0,0,0,5"/>
+                <TextBox PlaceholderText="e.g. Mc Donald" Margin="0,0,0,10" />
                 <TextBlock Text="Password" TextWrapping="Wrap"/>
                 <PasswordBox/>
             </StackPanel>
