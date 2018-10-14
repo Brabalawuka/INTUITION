@@ -13,7 +13,7 @@
 
 
     <Grid>
-<<<<<<< HEAD
+
         <ScrollViewer>
             <Grid>
                 <StackPanel Orientation="Vertical">
@@ -33,10 +33,19 @@
 
                     <TextBlock HorizontalAlignment="Left" Text="Date" TextWrapping="Wrap"    Margin="30,30,0,5"/>
                     <DatePicker HorizontalAlignment="Left" Width="350" Name="EventDate"  Margin="30,0,0,0" VerticalAlignment="Top" />
-                    <TextBlock HorizontalAlignment="Left" Text="TimeandDuration"      Margin="30,30,0,5"/>
+                    <TextBlock HorizontalAlignment="Left" Text="Time and Duration"      Margin="30,30,0,5"/>
                     <TextBox  HorizontalAlignment="Left"  Width="350" PlaceholderText="Max 100 words" Name="Timeandduration" Margin="30,0,0,0"/>
+                    <StackPanel Orientation="Horizontal" Margin="30,30,20,5">
+                        <TextBlock HorizontalAlignment="Left" Text="Is registration required?"  VerticalAlignment="Center"    />
+                        <ToggleSwitch Name="IRR" VerticalAlignment="Center" Padding="30,0,0,0"/>
+                    </StackPanel>
+                    <TextBlock HorizontalAlignment="Left" Text="If yes please enter registration link"      Margin="30,30,0,5"/>
+                    <TextBox  HorizontalAlignment="Left"  Width="350" PlaceholderText="Max 100 words" Name="registrationlink" Margin="30,0,0,0"/>
                     <TextBlock HorizontalAlignment="Left" Text="A photo for your event"      Margin="30,30,0,5"/>
                     <Button   HorizontalAlignment="Left" Name="UploadPhoto" Content="Upload Photo"  Margin="30,0,0,0"  Click="UploadPhoto_Click"/>
+                    <TextBlock HorizontalAlignment="Left" Text="Please enter event details"      Margin="30,30,0,5"/>
+                    <TextBox Width="500" Height="500" TextWrapping="Wrap" Name="detail"  />
+
 
                 </StackPanel>
 
@@ -44,25 +53,6 @@
             </Grid>
         </ScrollViewer>
         
-=======
-        <Grid>
-            <TextBlock HorizontalAlignment="Left" FontSize="25dp" Margin="180,128,0,0" Text="Event Name" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <TextBox Name="EventName" Text="TextBox" Margin="180,-318,879,318" Height="0"/>
-            <TextBlock Text="One Sentence Description" TextWrapping="Wrap"   FontSize="25dp" Height="32" Margin="180,227,567,741" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-            <TextBox Text="TextBox" Name="OneLineDescription" Margin="180,266,879,698" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-            <TextBlock Text="Event Venue" TextWrapping="Wrap"   FontSize="25dp" Height="32" Margin="180,328,567,640" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-            <TextBox Text="TextBox" Name="EventVenue" Margin="180,367,879,597"/>
-            <TextBlock Text="Date" TextWrapping="Wrap"   FontSize="25dp" Height="32" Margin="180,424,567,544"/>
-            <DatePicker Name="EventDate" FontSize="23" HorizontalAlignment="Left" Margin="180,462,0,0" VerticalAlignment="Top"/>
-            <TextBlock Text="Now Pin Your Event!" TextWrapping="Wrap"   FontSize="25dp" Height="32" Margin="972,500,-225,468"/>
-            <Button Name="UploadPhoto" Content="Upload Photo" FontSize="25dp" HorizontalAlignment="Left" Margin="180,584,0,0" VerticalAlignment="Top" Click="UploadPhoto_Click"/>
-            <TextBlock HorizontalAlignment="Left" FontStyle="Oblique" FontSize="23" Margin="180,643,0,0" Text="Name of photo uploaded" Name="PhotoName" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <Button Click="Button_Click" Content="Submit" FontSize="28dp" HorizontalAlignment="Left" Margin="819,750,0,0" VerticalAlignment="Top"/>
-
-
-
-        </Grid>
->>>>>>> 57bbad374812b606ed369d5ad83770642edb8ca6
 
         <ContentDialog
             Visibility="Visible"

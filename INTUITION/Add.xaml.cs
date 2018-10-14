@@ -75,10 +75,7 @@ namespace INTUITION
             setPhotoName(filename);
 
         }
-<<<<<<< HEAD
 
-=======
->>>>>>> 57bbad374812b606ed369d5ad83770642edb8ca6
         string photoName;
         private void setPhotoName(string photoName)
         {
@@ -97,7 +94,7 @@ namespace INTUITION
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string eventTitle = EventName.Text;
-<<<<<<< HEAD
+
             int eventID;//need to assign id
             string eventVenue = EventVenue.Text;
             string eventDescription = OneLineDescription.Text;
@@ -106,12 +103,12 @@ namespace INTUITION
             string eventDetail;//need to assign user input
             Windows.Devices.Geolocation.BasicGeoposition eventlocation;//need to assign user input
            // var anEvent = new Event(eventTitle, eventID, eventDescription,date,registration,eventDetail,eventlocation,photoName);
-=======
-            string eventVenue = EventVenue.Text;
-            string eventDescription = OneLineDescription.Text;
+
+            //string eventVenue = EventVenue.Text;
+            //string eventDescription = OneLineDescription.Text;
 
            // var anEvent = new Event(eventTitle, 1, eventDescription,);
->>>>>>> 57bbad374812b606ed369d5ad83770642edb8ca6
+
         }
     }
 }
