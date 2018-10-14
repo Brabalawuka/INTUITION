@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Media;
 using Microsoft.Toolkit.Uwp;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.Storage;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -25,6 +26,8 @@ namespace INTUITION
     /// </summary>
     public sealed partial class EventDetail : Page
     {
+        static StorageFolder folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+
         public EventDetail()
         {
             this.InitializeComponent();
@@ -35,8 +38,7 @@ namespace INTUITION
             int id = (int)e.Parameter;
             Debug.WriteLine(id);
 
-            Windows.Storage.StorageFolder folder = Windows.Storage.ApplicationData.Current.LocalFolder;
-    
+            
             Database db = new Database(folder.Path + "\\sheet.csv");
 
             string eventTitle = db.getAttributeById(id, "title");
@@ -46,21 +48,24 @@ namespace INTUITION
             string eventDuration = db.getAttributeById(id, "time");
             string registration = db.getAttributeById(id, "regrequired");
             Boolean eventRegistration;
-            if (registration == "true") eventRegistration = true;
-            else eventRegistration = false;
+            if (registration == "true") eventRegistration = false;
+            else eventRegistration = true;
 
             string eventDetail = db.getAttributeById(id, "detail");
             string eventLongtitude = db.getAttributeById(id, "lon");
             string eventLatitude = db.getAttributeById(id,"lat");
             string eventImageName = db.getAttributeById(id, "image");
 
-            doeverything(eventImageName, eventTitle, eventRegistration, eventDescription, eventDate, eventDuration, eventVenue, eventDetail);
+            doeverything( eventImageName, eventTitle, eventRegistration, eventDescription, eventDate, eventDuration, eventVenue, eventDetail);
 
             }
 
         public void doeverything(string imageloaction, string title, bool IRF, string Osd, string Date, string time, string venue, string detail)
         {
-            Eventimage.Source = new BitmapImage(new Uri(this.BaseUri,"Assets/first.jpg")) ;
+
+
+            Eventimage.Source = new BitmapImage(new Uri(folder.Path+"\\"+imageloaction)) ;
+            Debug.WriteLine(folder.Path);
             Event.Text = title;
             if (IRF == true)
             {

@@ -80,7 +80,7 @@ namespace INTUITION
                 UploadPhoto.Content = "Operation cancelled.";
             }
             Windows.Storage.StorageFolder folder = Windows.Storage.ApplicationData.Current.LocalFolder;
-            //file = await folder.CreateFileAsync(file.Name+ ".jpg");
+            file = await folder.CreateFileAsync(file.Name);
 
             string filename = file.Name;
 

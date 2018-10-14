@@ -45,18 +45,10 @@ namespace INTUITION
             // Set the map location.
             MapControl1.Center = cityCenter;
             //Load all pins
-<<<<<<< HEAD
 
-
-            ///need to readdatabvase!!!!!!!!!!!!!!!!!!!!!!!!!
-           
-
-=======
- 
-                //testing
                 Debug.WriteLine("here");
                 int id = 1;
-               
+
                 string eventTitle = db.getAttributeById(id, "title");
                 string eventLatitude = db.getAttributeById(id, "lat");
                 string eventLongtitude = db.getAttributeById(id, "lon");
@@ -71,7 +63,10 @@ namespace INTUITION
 
                 BasicGeoposition iconPosition = new BasicGeoposition() { Latitude = latitude, Longitude = longtitude };
                 AddSpaceNeedleIcon(eventTitle, id, iconPosition);
->>>>>>> 2c375a1e5f33fa0c756b1b6b2221aa0e3e9be679
+
+                
+
+                
 
         }
 

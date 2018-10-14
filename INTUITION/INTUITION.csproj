@@ -121,9 +121,9 @@
     <None Include="INTUITION_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\first.jpg" />
     <Content Include="Assets\Image\yes.png" />
     <Content Include="Assets\no.png" />
+    <Content Include="Assets\yes.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
