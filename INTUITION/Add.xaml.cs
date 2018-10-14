@@ -82,7 +82,7 @@ namespace INTUITION
             Windows.Storage.StorageFolder folder = Windows.Storage.ApplicationData.Current.LocalFolder;
             //file = await folder.CreateFileAsync(file.Name+ ".jpg");
 
-            string filename = file.Name + ".jpg";
+            string filename = file.Name;
 
             setPhotoName(filename);
 
@@ -155,6 +155,9 @@ namespace INTUITION
             int createdEventId = test.createEvent(eventTitle,  eventDescription,eventVenue, eventDate, eventDuration, NeedForRegistration, eventDetail, this.longitude,this.latitude, this.photoName);
 
             var anEvent = new Event(eventTitle, createdEventId, eventDescription, date, registration, eventDetail, defaultposition, myphotoname);
+
+            Frame.Navigate(typeof(MapView));
+
 
 
         }

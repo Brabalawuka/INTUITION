@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -25,11 +26,15 @@ namespace INTUITION
     /// </summary>
     public sealed partial class MapView : Page
     {
+        static Windows.Storage.StorageFolder folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+        static Database db = new Database(folder.Path + "\\sheet.csv");
+
+
         public MapView()
         {
             this.InitializeComponent();
-            
-            
+           
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -40,11 +45,33 @@ namespace INTUITION
             // Set the map location.
             MapControl1.Center = cityCenter;
             //Load all pins
+<<<<<<< HEAD
 
 
             ///need to readdatabvase!!!!!!!!!!!!!!!!!!!!!!!!!
            
 
+=======
+ 
+                //testing
+                Debug.WriteLine("here");
+                int id = 1;
+               
+                string eventTitle = db.getAttributeById(id, "title");
+                string eventLatitude = db.getAttributeById(id, "lat");
+                string eventLongtitude = db.getAttributeById(id, "lon");
+                string eventImageName = db.getAttributeById(id, "image");
+                Debug.WriteLine(eventTitle);
+                Debug.WriteLine(eventLatitude);
+                Debug.WriteLine(eventLongtitude);
+                double latitude = double.Parse(eventLatitude);
+                double longtitude = double.Parse(eventLongtitude);
+
+                Debug.WriteLine(eventTitle);
+
+                BasicGeoposition iconPosition = new BasicGeoposition() { Latitude = latitude, Longitude = longtitude };
+                AddSpaceNeedleIcon(eventTitle, id, iconPosition);
+>>>>>>> 2c375a1e5f33fa0c756b1b6b2221aa0e3e9be679
 
         }
 
@@ -77,13 +104,13 @@ namespace INTUITION
         {
             MapIcon myClickedIcon = args.MapElements.FirstOrDefault(x => x is MapIcon) as MapIcon;
             EventDialog.Title = myClickedIcon.Title;
-            EventDialog.Tag = myClickedIcon.Tag;
+            EventDialog.Tag =  myClickedIcon.Tag;
+            int eventId = int.Parse(EventDialog.Tag.ToString());
 
 
-
-            Tilteblock.Text = "This is a event u should never miss!!!!!"; ////fill in one sentence discription
-            Time.Text = "Date:" + "2018-10-13";      //////fill in date
-            Venue.Text = "Venue" + "LHS_TR_16";      /////fill in venue
+            Tilteblock.Text = db.getAttributeById(eventId, "description"); ////fill in one sentence discription
+            Time.Text = "Date:" + db.getAttributeById(eventId,"date");      //////fill in date
+            Venue.Text = "Venue" + db.getAttributeById(eventId,"venue");      /////fill in venue
 
             await EventDialog.ShowAsync();
 

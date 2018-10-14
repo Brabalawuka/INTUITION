@@ -34,8 +34,29 @@ namespace INTUITION
             base.OnNavigatedTo(e);
             int id = (int)e.Parameter;
             Debug.WriteLine(id);
-            doeverything("aaa", "GREATEST EVENT EVER", false, "This is the event once in a life time, never miss it !!!!!!", "14 Oct 2018", "7pm-9pm", "LHR_TR_16", "Lorem ipsum dolor sit amet, his in enim postulant theophrastus. Wisi virtute percipit ea mel, nam ut iuvaret debitis. Blandit percipit pri ea, an sed nihil reprehendunt, in mei facilisis definitiones. No vim alia utroque definiebas, no tota exerci duo, nobis laoreet ei eum.In sit brute justo instructior, vel eu laudem laboramus.Et sit sumo facer, ius no affert accusam conclusionemque.Diam blandit an has.Ius te nihil repudiare.Est solum putant inimicus ut, doctus blandit verterem eos at.Alienum delicata mel ex, ne omnes affert pri, an vel everti graecis disputationi.Melius maluisset tincidunt te vis, fabulas apeirian definiebas ius te.In est affert ornatus, eum essent dissentiunt te.At evertitur constituam sed, et primis qualisque ius, magna detraxit assueverit his ex.In verear eripuit consequat quo, has ne diceret bonorum.Ad case dicit affert mei.At vim tation deserunt.Ridens doming duo eu, eu augue detraxit mei.Novum iriure discere te mel, id vim invenire molestiae disputando.Ad usu tractatos maiestatis vituperata, mei at laboramus persecuti, cum sumo primis officiis no.");
-        }
+
+            Windows.Storage.StorageFolder folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+    
+            Database db = new Database(folder.Path + "\\sheet.csv");
+
+            string eventTitle = db.getAttributeById(id, "title");
+            string eventDescription = db.getAttributeById(id, "description");
+            string eventVenue = db.getAttributeById(id, "venue");
+            string eventDate = db.getAttributeById(id, "date");
+            string eventDuration = db.getAttributeById(id, "time");
+            string registration = db.getAttributeById(id, "regrequired");
+            Boolean eventRegistration;
+            if (registration == "true") eventRegistration = true;
+            else eventRegistration = false;
+
+            string eventDetail = db.getAttributeById(id, "detail");
+            string eventLongtitude = db.getAttributeById(id, "lon");
+            string eventLatitude = db.getAttributeById(id,"lat");
+            string eventImageName = db.getAttributeById(id, "image");
+
+            doeverything(eventImageName, eventTitle, eventRegistration, eventDescription, eventDate, eventDuration, eventVenue, eventDetail);
+
+            }
 
         public void doeverything(string imageloaction, string title, bool IRF, string Osd, string Date, string time, string venue, string detail)
         {
