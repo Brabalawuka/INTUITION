@@ -26,8 +26,7 @@ namespace INTUITION
     /// </summary>
     public sealed partial class MapView : Page
     {
-        static Windows.Storage.StorageFolder folder = Windows.Storage.ApplicationData.Current.LocalFolder;
-        static Database db = new Database(folder.Path + "\\sheet.csv");
+
 
 
         public MapView()
@@ -39,6 +38,8 @@ namespace INTUITION
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            Windows.Storage.StorageFolder folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            Database db = new Database(folder.Path + "\\sheet.csv");
             // Specify a known location.
             BasicGeoposition cityPosition = new BasicGeoposition() { Latitude = 1.348, Longitude = 103.6827 };
             Geopoint cityCenter = new Geopoint(cityPosition);
@@ -102,6 +103,8 @@ namespace INTUITION
 
         private async void MapControl1_MapElementClick(MapControl sender, MapElementClickEventArgs args)
         {
+            Windows.Storage.StorageFolder folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            Database db = new Database(folder.Path + "\\sheet.csv");
             MapIcon myClickedIcon = args.MapElements.FirstOrDefault(x => x is MapIcon) as MapIcon;
             EventDialog.Title = myClickedIcon.Title;
             EventDialog.Tag =  myClickedIcon.Tag;
