@@ -1,7 +1,6 @@
 using System;
 using System.Data;
 using System.IO;
-using Microsoft.VisualBasic.FileIO;
 
 /*
  * class Database(FILEPATH)
@@ -23,34 +22,12 @@ using Microsoft.VisualBasic.FileIO;
  * returns id
  */
 
-namespace Testingonly
-{
-    class Testingonly
-    {
-        static void Main(string[] args)
-        {
-
-            // This opens/creates a CSV in the filepath
-            Database test = new Database(@"D:\sheet.csv");
-
-            // Creates an event in this database and gets the ID
-            int createdEventId = test.createEvent("Event Title","Some description","A venue","11/10","1:30","1","Details","1.35","1.2","http://asdf.com");
-
-            // Outputs the ID along with example attributes
-            Console.WriteLine("ID: " + createdEventId);
-            Console.WriteLine("Title: " + test.getAttributeById(createdEventId,"title")); // gets title
-            Console.WriteLine("Description: " + test.getAttributeById(createdEventId, "description")); // gets description
-
-        }
-    }
-}
-
 
 class Database
 {
     private string filePath;
     private DataTable dt;
-    private TextFieldParser parser;
+    //private TextFieldParser parser;
 
     // CONSTRUCTORS
 
@@ -66,46 +43,25 @@ class Database
             File.WriteAllText(_s, "ID,title, description, venue, date, time, regrequired, detail, lon, lat, image\r\n");
         }
 
-        parser = new TextFieldParser(_s);
-
-        parser.HasFieldsEnclosedInQuotes = true;
-        parser.SetDelimiters(",");
-
-        string[] fields;
-
-        int i = 0;
-        int j = 0;
-
-        while (!parser.EndOfData)
+        using (StreamReader sr = new StreamReader(_s))
         {
-            fields = parser.ReadFields();
-
-            if (j != 0)    // TO HELP IGNORE HEADERS
+            string[] headers = sr.ReadLine().Split(',');
+            foreach (string header in headers)
             {
-                DataRow dr = dt.NewRow();
+                dt.Columns.Add(header);
+            }
+            while (!sr.EndOfStream)
+            {
 
-                foreach (string field in fields)
+                    string[] rows = sr.ReadLine().Split(',');
+                DataRow dr = dt.NewRow();
+                for (int i = 0; i < headers.Length; i++)
                 {
-                    //Console.WriteLine(i+" : "+field);
-                    dr[i] = field;
-                    i++;
+                    dr[i] = rows[i];
                 }
                 dt.Rows.Add(dr);
-
             }
-            else
-            {   // MUST ADD HEADERS TO DATATABLE FOR IT TO WORK!!!!!!!!
-                foreach (string field in fields)
-                {
-                    dt.Columns.Add(field);
-                }
-            }
-            i = 0;
-            j++;
         }
-
-        parser.Close();
-
 
 
     }

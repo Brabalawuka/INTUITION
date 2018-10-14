@@ -47,7 +47,7 @@
                     <Button   HorizontalAlignment="Left" Name="UploadPhoto" Content="Upload Photo"  Margin="30,0,0,0"  Click="UploadPhoto_Click"/>
                     <TextBlock HorizontalAlignment="Left" Text="Please enter event details"      Margin="30,30,0,5"/>
                     <TextBox Width="800" Height="500" TextWrapping="Wrap" Name="detail" HorizontalAlignment="Left"  />
-
+                    <Button   HorizontalAlignment="Left" Name="Submit" Content="Submit"  Margin="30,0,0,0"  Click="Button_Click"/>
 
                 </StackPanel>
 
@@ -55,10 +55,7 @@
             </Grid>
         </ScrollViewer>
         
-<<<<<<< HEAD
-=======
 
->>>>>>> b6e1b1ecade614002499f7e0b92dcb9f9a7daae1
         <ContentDialog
             Visibility="Visible"
             x:Name="LoginDialog"

@@ -89,18 +89,21 @@ namespace INTUITION
         }
 
 
-<<<<<<< HEAD
+
 
         string photoName;
-=======
-        string photoName = " ";
->>>>>>> b6e1b1ecade614002499f7e0b92dcb9f9a7daae1
         private void setPhotoName(string photoName)
         {
             this.photoName = photoName;
         }
 
+        string longitude;
+        string latitude;
+        private void setLocation(string latitude, string longtitude) {
+            this.longitude = longtitude;
+            this.latitude = latitude;
 
+        }
 
 
         private void UploadPhoto_Click(object sender, RoutedEventArgs e)
@@ -108,38 +111,7 @@ namespace INTUITION
             SelectPhoto();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            string eventTitle = EventName.Text;
-<<<<<<< HEAD
-
-            int eventID;//need to assign id
-            string eventVenue = EventVenue.Text;
-            string eventDescription = OneLineDescription.Text;
-            var date = this.EventDate.Date;
-            Boolean registration;//need to assign user input
-            string eventDetail;//need to assign user input
-            Windows.Devices.Geolocation.BasicGeoposition eventlocation;//need to assign user input
-            var anEvent = new Event(eventTitle, eventID, eventDescription,date,registration,eventDetail,eventlocation,photoName);
-
-
-=======
-            string myphotoname = photoName;
-
-            int eventID = 0005 ;//need to assign id
-            string eventVenue = EventVenue.Text;
-            string eventDescription = OneLineDescription.Text;
-            var date = this.EventDate.Date;
-            Boolean registration = IRR.IsOn;//need to assign user input
-            string eventDetail = detail.Text;//need to assign user input
-            
-            
-
-            
-            var anEvent = new Event(eventTitle, eventID, eventDescription, date, registration, eventDetail, defaultposition, myphotoname);
-            
-
-        }
+    
 
         private void mymap_MapDoubleTapped(MapControl sender, MapInputEventArgs args)
         {
@@ -157,7 +129,37 @@ namespace INTUITION
 
             mymap.MapElements.Add(spaceNeedleIcon);
 
->>>>>>> b6e1b1ecade614002499f7e0b92dcb9f9a7daae1
+            setLocation(defaultposition.Latitude.ToString(), defaultposition.Longitude.ToString());
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string eventTitle = EventName.Text;
+
+            string myphotoname = photoName;
+
+            int eventID = 0005;
+            string eventVenue = EventVenue.Text;
+            string eventDescription = OneLineDescription.Text;
+            var date = this.EventDate.Date;
+            string eventDate = date.ToString();
+            Boolean registration = IRR.IsOn;
+            string NeedForRegistration = registration.ToString();
+            string eventDetail = detail.Text;
+            string eventDuration = Timeandduration.Text;
+
+
+            Windows.Storage.StorageFolder folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            
+            Database test = new Database(folder.Path+"\\sheet.csv");
+            int createdEventId = test.createEvent(eventTitle,  eventDescription,eventVenue, eventDate, eventDuration, NeedForRegistration, eventDetail, this.longitude,this.latitude, this.photoName);
+
+            var anEvent = new Event(eventTitle, createdEventId, eventDescription, date, registration, eventDetail, defaultposition, myphotoname);
+
+
+        }
+
+
+
     }
 }
