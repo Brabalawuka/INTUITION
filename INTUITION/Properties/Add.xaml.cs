@@ -68,65 +68,14 @@ namespace INTUITION
                 UploadPhoto.Content = "Operation cancelled.";
             }
             Windows.Storage.StorageFolder folder = Windows.Storage.ApplicationData.Current.LocalFolder;
-            //file = await folder.CreateFileAsync(file.Name+ ".jpg");
+            file = await folder.CreateFileAsync(file.Name+ ".jpg");
 
-            string filename = file.Name + ".jpg";
-
-            setPhotoName(filename);
 
         }
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> 57bbad374812b606ed369d5ad83770642edb8ca6
->>>>>>> 117fd5a122ef6758a0c6169fc5708b8309b71fd5
-        string photoName;
-        private void setPhotoName(string photoName)
-        {
-            this.photoName = photoName;
-        }
-
-
-
-
 
         private void UploadPhoto_Click(object sender, RoutedEventArgs e)
         {
             SelectPhoto();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            string eventTitle = EventName.Text;
-<<<<<<< HEAD
-            int eventID;//need to assign id
-            string eventVenue = EventVenue.Text;
-            string eventDescription = OneLineDescription.Text;
-            var date = this.EventDate.Date;
-            Boolean registration;//need to assign user input
-            string eventDetail;//need to assign user input
-            Windows.Devices.Geolocation.BasicGeoposition eventlocation;//need to assign user input
-            var anEvent = new Event(eventTitle, eventID, eventDescription,date,registration,eventDetail,eventlocation,photoName);
-=======
-<<<<<<< HEAD
-            int eventID;//need to assign id
-            string eventVenue = EventVenue.Text;
-            string eventDescription = OneLineDescription.Text;
-            var date = this.EventDate.Date;
-            Boolean registration;//need to assign user input
-            string eventDetail;//need to assign user input
-            Windows.Devices.Geolocation.BasicGeoposition eventlocation;//need to assign user input
-           // var anEvent = new Event(eventTitle, eventID, eventDescription,date,registration,eventDetail,eventlocation,photoName);
-=======
-            string eventVenue = EventVenue.Text;
-            string eventDescription = OneLineDescription.Text;
-
-           // var anEvent = new Event(eventTitle, 1, eventDescription,);
->>>>>>> 57bbad374812b606ed369d5ad83770642edb8ca6
->>>>>>> 117fd5a122ef6758a0c6169fc5708b8309b71fd5
         }
     }
 }

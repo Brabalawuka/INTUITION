@@ -1,0 +1,64 @@
+﻿<Page
+    x:Class="INTUITION.Add"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:INTUITION"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+ 
+
+
+    <Grid>
+        <Grid>
+            <StackPanel Orientation="Vertical">
+                <TextBlock HorizontalAlignment="Left"  Margin="30,30,0,5" Text="Event Name"  VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Width="350" Name="EventName" PlaceholderText="Enter the event name" Margin="30,0,0,0" />
+                <TextBlock  HorizontalAlignment="Left" Text="One Sentence Description"   Margin="30,30,0,5"  />
+                <TextBox HorizontalAlignment="Left"  Width="350" PlaceholderText="Max 100 words" Name="OneLineDescription" Margin="30,0,0,0" MaxWidth="650" />
+                <TextBlock HorizontalAlignment="Left" Text="Event Venue" TextWrapping="Wrap"   Margin="30,30,0,5"  />
+                <TextBox  HorizontalAlignment="Left"  Width="350" PlaceholderText="Max 100 words" Name="EventVenue" Margin="30,0,0,0"/>
+                <Maps:MapControl Name="mymap"
+                                 ZoomInteractionMode="GestureAndControl"
+                                 Width="500"
+                                 Height="500"
+                                 Margin="30"
+                                 HorizontalAlignment="Left"
+                                 MapServiceToken="KYdBGs96ZoznLQ1xaRsJ~5iI72YvjPLrZp331L_obOQ~AqfLDboaUQKhi7DKAGBdTntCEMHZfwvfCrcQoJHTFkjtnt_GzGEwHbOgxlGsQSE2"/>
+                                 
+                <TextBlock HorizontalAlignment="Left" Text="Date" TextWrapping="Wrap"    Margin="30,30,0,5"/>
+                <DatePicker HorizontalAlignment="Left" Width="350" Name="EventDate"  Margin="30,0,0,0" VerticalAlignment="Top" />
+                <TextBlock HorizontalAlignment="Left" Text="Time and Duration"      Margin="30,30,0,5"/>
+                <TextBox  HorizontalAlignment="Left"  Width="350" PlaceholderText="Max 100 words" Name="Time and duration" Margin="30,0,0,0"/>
+                <TextBlock HorizontalAlignment="Left" Text="A photo for your event"      Margin="30,30,0,5"/>
+                <Button   HorizontalAlignment="Left" Name="UploadPhoto" Content="Upload Photo"  Margin="30,0,0,0"  Click="UploadPhoto_Click"/>
+                
+            </StackPanel>
+            
+             
+        </Grid>
+
+        <ContentDialog
+           Visibility="Visible"
+        x:Name="LoginDialog"
+        PrimaryButtonClick="SignInButtonClick"
+        PrimaryButtonText="Sign In"
+        >
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="User Name" TextWrapping="Wrap"/>
+                <TextBox Text="e.g. Mc Donald" FontWeight="Light" FontSize="15dp"/>
+                <TextBlock Text="Password" TextWrapping="Wrap"/>
+                <PasswordBox/>
+            </StackPanel>
+        </ContentDialog>
+    </Grid>
+
+
+
+
+
+
+</Page>
