@@ -47,24 +47,32 @@ namespace INTUITION
             //Load all pins
  
                 //testing
-                Debug.WriteLine("here");
-                int id = 1;
-               
-                string eventTitle = db.getAttributeById(id, "title");
-                string eventLatitude = db.getAttributeById(id, "lat");
-                string eventLongtitude = db.getAttributeById(id, "lon");
-                string eventImageName = db.getAttributeById(id, "image");
-                Debug.WriteLine(eventTitle);
-                Debug.WriteLine(eventLatitude);
-                Debug.WriteLine(eventLongtitude);
-                double latitude = double.Parse(eventLatitude);
-                double longtitude = double.Parse(eventLongtitude);
+                int id=1;
 
-                Debug.WriteLine(eventTitle);
+                string eventTitle;
+                string eventLatitude;
+                string eventLongtitude;
+                string eventImageName;
+
+                double latitude;
+                double longtitude;
+
+
+            while (db.getAttributeById(id, "title") != null)
+            {
+                eventTitle = db.getAttributeById(id, "title");
+                eventLatitude = db.getAttributeById(id, "lat");
+                eventLongtitude = db.getAttributeById(id, "lon");
+                eventImageName = db.getAttributeById(id, "image");
+
+                latitude = double.Parse(eventLatitude);
+                longtitude = double.Parse(eventLongtitude);
 
                 BasicGeoposition iconPosition = new BasicGeoposition() { Latitude = latitude, Longitude = longtitude };
                 AddSpaceNeedleIcon(eventTitle, id, iconPosition);
 
+                id++;
+            }
         }
 
         public void AddSpaceNeedleIcon(string title, int id, BasicGeoposition iconposition)
