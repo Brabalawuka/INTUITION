@@ -40,14 +40,19 @@ namespace INTUITION
             // Set the map location.
             MapControl1.Center = cityCenter;
             //Load all pins
-            AddSpaceNeedleIcon("Greatest Event", 24);
+
+
+            ///need to readdatabvase!!!!!!!!!!!!!!!!!!!!!!!!!
+            AddSpaceNeedleIcon("Greatest Event", );
+
+
         }
 
-        public void AddSpaceNeedleIcon(string title, int id)
+        public void AddSpaceNeedleIcon(string title, int id, BasicGeoposition iconposition)
         {
             var MyLandmarks = new List<MapElement>();
 
-            BasicGeoposition snPosition = new BasicGeoposition { Latitude = 1.348, Longitude = 103.6827 };
+            BasicGeoposition snPosition = iconposition;
             Geopoint snPoint = new Geopoint(snPosition);
 
             MapIcon spaceNeedleIcon = new MapIcon
@@ -73,9 +78,12 @@ namespace INTUITION
             MapIcon myClickedIcon = args.MapElements.FirstOrDefault(x => x is MapIcon) as MapIcon;
             EventDialog.Title = myClickedIcon.Title;
             EventDialog.Tag = myClickedIcon.Tag;
-            Tilteblock.Text = "This is a event u should never miss!!!!!";
-            Time.Text = "Time:" + "2018-10-13";
-            Venue.Text = "Venue" + "LHS_TR_16";
+
+
+
+            Tilteblock.Text = "This is a event u should never miss!!!!!"; ////fill in one sentence discription
+            Time.Text = "Date:" + "2018-10-13";      //////fill in date
+            Venue.Text = "Venue" + "LHS_TR_16";      /////fill in venue
 
             await EventDialog.ShowAsync();
 
