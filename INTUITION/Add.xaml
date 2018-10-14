@@ -29,6 +29,8 @@
                                  Height="500"
                                  Margin="30"
                                  HorizontalAlignment="Left"
+                                 IsDoubleTapEnabled="True"
+                                 MapDoubleTapped="mymap_MapDoubleTapped"
                                  MapServiceToken="KYdBGs96ZoznLQ1xaRsJ~5iI72YvjPLrZp331L_obOQ~AqfLDboaUQKhi7DKAGBdTntCEMHZfwvfCrcQoJHTFkjtnt_GzGEwHbOgxlGsQSE2"/>
 
                     <TextBlock HorizontalAlignment="Left" Text="Date" TextWrapping="Wrap"    Margin="30,30,0,5"/>
@@ -44,7 +46,7 @@
                     <TextBlock HorizontalAlignment="Left" Text="A photo for your event"      Margin="30,30,0,5"/>
                     <Button   HorizontalAlignment="Left" Name="UploadPhoto" Content="Upload Photo"  Margin="30,0,0,0"  Click="UploadPhoto_Click"/>
                     <TextBlock HorizontalAlignment="Left" Text="Please enter event details"      Margin="30,30,0,5"/>
-                    <TextBox Width="500" Height="500" TextWrapping="Wrap" Name="detail"  />
+                    <TextBox Width="800" Height="500" TextWrapping="Wrap" Name="detail" HorizontalAlignment="Left"  />
 
 
                 </StackPanel>

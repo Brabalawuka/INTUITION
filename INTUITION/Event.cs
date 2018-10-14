@@ -10,27 +10,26 @@ namespace INTUITION
 {
     public class Event
     {
-        private string Title { get; set; }
-        private int Id { get; set; }
-        private string OneSentenceDiscription { get; set; }
-        private string Venue { get; set; }
-        private DateTime Datetime { get; set; }
-        private bool Isregistrationrequired { get; set; }
-        private string Detail { get; set; }
-        private BasicGeoposition Position { get; set; }
-        private string Imagelocation { get; set; }
+        private string eventTitle;
+        private int eventID;
+        private string eventDescription;
+        private DateTimeOffset date;
+        private bool registration;
+        private string eventDetail;
+        private BasicGeoposition defaultposition;
+        private string myphotoname;
 
-        public Event(string title, int id, string Osd, string venue, DateTime datetime, bool Irr, string detail, BasicGeoposition eventposition, string imagelocation)
+
+        public Event(string eventTitle, int eventID, string eventDescription, DateTimeOffset date, bool registration, string eventDetail, BasicGeoposition defaultposition, string myphotoname)
         {
-            Title = title;
-            Id = id;
-            OneSentenceDiscription = OneSentenceDiscription;
-            Venue = venue;
-            Isregistrationrequired = Irr;
-            Detail = detail;
-            Position = eventposition;
-            Imagelocation = imagelocation;
+            this.eventTitle = eventTitle;
+            this.eventID = eventID;
+            this.eventDescription = eventDescription;
+            this.date = date;
+            this.registration = registration;
+            this.eventDetail = eventDetail;
+            this.defaultposition = defaultposition;
+            this.myphotoname = myphotoname;
         }
-
     }
 }

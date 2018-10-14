@@ -4,10 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Maps;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
@@ -24,6 +26,8 @@ namespace INTUITION
     /// </summary>
     public sealed partial class Add : Page
     {
+        BasicGeoposition defaultposition = new BasicGeoposition() { Latitude = 1.348, Longitude = 103.6827 };
+
         public Add()
         {
             this.InitializeComponent();
@@ -38,7 +42,15 @@ namespace INTUITION
             {
                 var result = await LoginDialog.ShowAsync();
             }
-            
+
+            BasicGeoposition cityPosition = new BasicGeoposition() { Latitude = 1.348, Longitude = 103.6827 };
+            Geopoint cityCenter = new Geopoint(cityPosition);
+            // Set the map location.
+            mymap.Center = cityCenter;
+            mymap.ZoomLevel = 15;
+
+
+
 
 
         }
@@ -76,7 +88,8 @@ namespace INTUITION
 
         }
 
-        string photoName;
+
+        string photoName = " ";
         private void setPhotoName(string photoName)
         {
             this.photoName = photoName;
@@ -94,20 +107,38 @@ namespace INTUITION
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string eventTitle = EventName.Text;
+            string myphotoname = photoName;
 
-            int eventID;//need to assign id
+            int eventID = 0005 ;//need to assign id
             string eventVenue = EventVenue.Text;
             string eventDescription = OneLineDescription.Text;
             var date = this.EventDate.Date;
-            Boolean registration;//need to assign user input
-            string eventDetail;//need to assign user input
-            Windows.Devices.Geolocation.BasicGeoposition eventlocation;//need to assign user input
-           // var anEvent = new Event(eventTitle, eventID, eventDescription,date,registration,eventDetail,eventlocation,photoName);
+            Boolean registration = IRR.IsOn;//need to assign user input
+            string eventDetail = detail.Text;//need to assign user input
+            
+            
 
-            //string eventVenue = EventVenue.Text;
-            //string eventDescription = OneLineDescription.Text;
+            
+            var anEvent = new Event(eventTitle, eventID, eventDescription, date, registration, eventDetail, defaultposition, myphotoname);
+            
 
-           // var anEvent = new Event(eventTitle, 1, eventDescription,);
+        }
+
+        private void mymap_MapDoubleTapped(MapControl sender, MapInputEventArgs args)
+        {
+            mymap.MapElements.Clear();
+            defaultposition = args.Location.Position;
+            Geopoint snPoint = new Geopoint(defaultposition);
+
+            MapIcon spaceNeedleIcon = new MapIcon
+            {
+                Location = snPoint,
+                NormalizedAnchorPoint = new Point(0.5, 0.5),
+                Title = "Event Venue"
+
+            };
+
+            mymap.MapElements.Add(spaceNeedleIcon);
 
         }
     }
